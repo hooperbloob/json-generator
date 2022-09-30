@@ -7,14 +7,18 @@ import java.util.List;
 
 public class EnumGenerator extends JsonValueGenerator<Object> {
 
+    private final List<Object> possibleValues;
+
     public EnumGenerator(Schema schema) {
         super(schema);
 
+        possibleValues = ((EnumSchema) schema).getPossibleValuesAsList();
     }
 
     @Override
     public Object generate() {
-        List<Object> possibleValuesAsList = ((EnumSchema) schema).getPossibleValuesAsList();
-        return possibleValuesAsList.get(0);
+
+        int idx = random.nextInt(possibleValues.size() - 1);
+        return possibleValues.get(idx);
     }
 }

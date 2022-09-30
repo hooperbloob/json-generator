@@ -10,6 +10,6 @@ public class BooleanGenerator extends JsonValueGenerator<Boolean> {
 
 	@Override
 	public Boolean generate() {
-		return false;
+		return random.nextFloat() > 0.5;
 	}
 }
